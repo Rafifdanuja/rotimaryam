@@ -1,0 +1,32 @@
+menu_data = {
+    "Gula": {"harga": 10000, "topping": ["Gula"]},
+    "Tepung Gula": {"harga": 10000, "topping": ["Tepung Gula"]},
+    "Pedas": {"harga": 10000, "topping": ["Pedas"]},
+    "Susu Putih": {"harga": 11000, "topping": ["Susu Putih"]},
+    "Susu Coklat": {"harga": 11000, "topping": ["Susu Coklat"]},
+    "Keju Susu": {"harga": 13000, "topping": ["Keju", "Susu"]},
+    "Kacang Susu": {"harga": 13000, "topping": ["Kacang", "Susu"]},
+    "Chocolate": {"harga": 13000, "topping": ["Chocolate"]},
+    "Meses Susu": {"harga": 13000, "topping": ["Meses", "Susu"]},
+    "Oreo Susu": {"harga": 13000, "topping": ["Oreo", "Susu"]},
+    "Cokelat Kacang Susu": {"harga": 15000, "topping": ["Cokelat", "Kacang", "Susu"]},
+    "Blueberry Keju Susu": {"harga": 15000, "topping": ["Blueberry", "Keju", "Susu"]},
+    "Strawberry Keju Susu": {"harga": 15000, "topping": ["Strawberry", "Keju", "Susu"]},
+    "Kacang Keju Susu": {"harga": 15000, "topping": ["Kacang", "Keju", "Susu"]},
+    "Meses Keju Susu": {"harga": 15000, "topping": ["Meses", "Keju", "Susu"]},
+    "Chocolate Keju Susu": {"harga": 15000, "topping": ["Chocolate", "Keju", "Susu"]},
+    "Oreo Keju Susu": {"harga": 15000, "topping": ["Oreo", "Keju", "Susu"]},
+    "Chocolate Oreo Susu": {"harga": 15000, "topping": ["Chocolate", "Oreo", "Susu"]},
+    "Kismis Susu": {"harga": 15000, "topping": ["Kismis", "Susu"]},
+    "Tiramisu Susu": {"harga": 15000, "topping": ["Tiramisu", "Susu"]},
+    "Greantea Susu": {"harga": 17000, "topping": ["Greantea", "Susu"]},
+    "Keju Kismis Susu": {"harga": 17000, "topping": ["Keju", "Kismis", "Susu"]},
+    "Isi Coklat Keju": {"harga": 17000, "topping": ["Isi Coklat", "Keju"]},
+    "Chocolate Kacang Keju Susu": {"harga": 18000, "topping": ["Chocolate", "Kacang", "Keju", "Susu"]},
+    "Tiramisu Keju": {"harga": 18000, "topping": ["Tiramisu", "Keju"]},
+    "Greantea Keju": {"harga": 18000, "topping": ["Greantea", "Keju"]},
+    "Chocolate Tiramisu": {"harga": 18000, "topping": ["Chocolate", "Tiramisu"]},
+    "Chocolate Greantea": {"harga": 18000, "topping": ["Chocolate", "Greantea"]}
+}
+
+

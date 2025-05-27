@@ -28,6 +28,15 @@ def get_data_by_date(sheet, target_date):
     df_filtered = df[df['Tanggal'] == pd.to_datetime(target_date)]
     return df_filtered
 
+def get_data_last_week(sheet, end_date):
+    records = sheet.get_all_records()
+    df = pd.DataFrame(records)
+    df['Tanggal'] = pd.to_datetime(df['Tanggal'])
+
+    start_date = pd.to_datetime(end_date) - pd.Timedelta(days=6)
+    df_filtered = df[(df['Tanggal'] >= start_date) & (df['Tanggal'] <= pd.to_datetime(end_date))]
+    return df_filtered
+
 def abc_analysis(df):
     df_grouped = df.groupby('Menu')['Total'].sum().reset_index()
     df_grouped = df_grouped.sort_values(by='Total', ascending=False)
@@ -81,6 +90,20 @@ if st.button("🔍 Tampilkan ABC Analysis Hari Ini"):
 
     if not df_today.empty:
         df_abc = abc_analysis(df_today)
+
+st.subheader("📈 ABC Analysis 7 Hari Terakhir")
+
+if st.button("📅 Tampilkan ABC Analysis Mingguan"):
+    sheet = connect_gsheet()
+    df_week = get_data_last_week(sheet, tanggal)
+
+    if not df_week.empty:
+        df_abc_week = abc_analysis(df_week)
+        st.write("Hasil ABC Analysis untuk 7 Hari Terakhir:")
+        st.dataframe(df_abc_week)
+    else:
+        st.warning("Belum ada transaksi dalam 7 hari terakhir.")
+
         st.write("Hasil ABC Analysis:")
         st.dataframe(df_abc)
     else:

@@ -8,9 +8,7 @@ import json
 
 # Setup Google Sheets
 def connect_gsheet():
-    creds_dict = st.secrets["gcp_service_account"]
-    
-    # Pastikan private_key memiliki actual newline
+    creds_dict = dict(st.secrets["gcp_service_account"])  # buat salinan dict
     creds_dict["private_key"] = creds_dict["private_key"].replace('\\n', '\n')
 
     scopes = [

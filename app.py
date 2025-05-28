@@ -9,18 +9,20 @@ import json
 
 # Setup Google Sheets
 def connect_gsheet():
-    creds_dict = dict(st.secrets["gcp_service_account"])  # buat salinan dict
+    creds_dict = dict(st.secrets["gcp_service_account"])  # Salin dictionary agar bisa modifikasi
+    # Ganti literal '\\n' dengan newline '\n' agar private_key valid
     creds_dict["private_key"] = creds_dict["private_key"].replace('\\n', '\n')
 
     scopes = [
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive"
     ]
-    
+
     creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
     client = gspread.authorize(creds)
     sheet = client.open("penjualan_roti_maryam").sheet1
     return sheet
+
 
 # Simpan transaksi
 def simpan_ke_gsheet(data):

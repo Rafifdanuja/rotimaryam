@@ -4,12 +4,14 @@ from menu_data import menu_data
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
+import json
 
 # Setup Google Sheets
 def connect_gsheet():
     scope = ["https://spreadsheets.google.com/feeds",
              "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("gspread_key.json", scope)
+    creds_dict = json.loads(json.dumps(st.secrets["gspread"]))
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     client = gspread.authorize(creds)
     sheet = client.open("penjualan_roti_maryam").sheet1
     return sheet

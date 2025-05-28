@@ -84,14 +84,16 @@ if menu_selected:
         simpan_ke_gsheet(data)
         st.success("Transaksi berhasil disimpan ke Google Sheets!")
         
-st.subheader("📊 Lihat ABC Analysis Hari Ini")
-
 if st.button("🔍 Tampilkan ABC Analysis Hari Ini"):
     sheet = connect_gsheet()
     df_today = get_data_by_date(sheet, tanggal)
 
     if not df_today.empty:
         df_abc = abc_analysis(df_today)
+        st.write("Hasil ABC Analysis Hari Ini:")
+        st.dataframe(df_abc)
+    else:
+        st.warning("Belum ada transaksi di tanggal ini.")
 
 st.subheader("📈 ABC Analysis 7 Hari Terakhir")
 
@@ -105,8 +107,3 @@ if st.button("📅 Tampilkan ABC Analysis Mingguan"):
         st.dataframe(df_abc_week)
     else:
         st.warning("Belum ada transaksi dalam 7 hari terakhir.")
-
-        st.write("Hasil ABC Analysis:")
-        st.dataframe(df_abc)
-    else:
-        st.warning("Belum ada transaksi di tanggal ini.")

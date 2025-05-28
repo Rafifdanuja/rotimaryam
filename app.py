@@ -10,7 +10,7 @@ import json
 def connect_gsheet():
     scope = ["https://spreadsheets.google.com/feeds",
              "https://www.googleapis.com/auth/drive"]
-    creds_dict = json.loads(json.dumps(st.secrets["gspread"]))
+    creds_dict = json.loads(json.dumps(st.secrets["gcp_service_account"]))
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     client = gspread.authorize(creds)
     sheet = client.open("penjualan_roti_maryam").sheet1

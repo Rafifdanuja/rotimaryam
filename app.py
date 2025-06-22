@@ -36,6 +36,12 @@ def get_data_last_week(sheet, end_date):
     start_date = pd.to_datetime(end_date) - pd.Timedelta(days=6)
     return df[(df['Tanggal'] >= start_date) & (df['Tanggal'] <= pd.to_datetime(end_date))]
 
+def get_data_last_month(sheet, end_date):
+    df = pd.DataFrame(sheet.get_all_records())
+    df['Tanggal'] = pd.to_datetime(df['Tanggal'])
+    start_date = pd.to_datetime(end_date) - pd.Timedelta(days=29)
+    return df[(df['Tanggal'] >= start_date) & (df['Tanggal'] <= pd.to_datetime(end_date))]
+
 def abc_analysis(df):
     grouped = df.groupby('Menu')['Total'].sum().reset_index()
     grouped = grouped.sort_values(by='Total', ascending=False)
@@ -111,3 +117,17 @@ with st.expander("📅 Lihat ABC Analysis Mingguan"):
         st.dataframe(df_abc_week, use_container_width=True)
     else:
         st.warning("⚠️ Tidak ditemukan transaksi selama 7 hari terakhir.")
+
+# --- ABC Analysis Bulanan
+st.markdown("---")
+st.subheader("📆 ABC Analysis 30 Hari Terakhir")
+
+with st.expander("📊 Lihat ABC Analysis Bulanan"):
+    sheet = connect_gsheet()
+    df_month = get_data_last_month(sheet, tanggal)
+
+    if not df_month.empty:
+        df_abc_month = abc_analysis(df_month)
+        st.dataframe(df_abc_month, use_container_width=True)
+    else:
+        st.warning("⚠️ Tidak ditemukan transaksi selama 30 hari terakhir.")
